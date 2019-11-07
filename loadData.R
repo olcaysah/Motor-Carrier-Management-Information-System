@@ -13,3 +13,4 @@ LoadData <- function(query){
   return(Data) 
 }
 
+dd <- LoadData("select * from fmcsa_table where phy_country = 'US' and phy_state ='AL';")
