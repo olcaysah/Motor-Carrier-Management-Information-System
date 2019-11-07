@@ -1,5 +1,5 @@
-# Motor-Carrier-Management-Information-System
-RShiny application for downloading and visualizing Motor Carrier Management Information System (MCMIS) data
+RShiny application for downloading and visualizing Motor Carrier Management Information System (MCMIS) data.
+More information can be found here: [link](https://ask.fmcsa.dot.gov/app/mcmiscatalog/d_census_mcmis_doc){:target="_blank"}
 
 I wanted to have an example for downloading data from RShiny and PostgreSQL powered web application.
 
@@ -7,25 +7,23 @@ Using this application, data can be filtered and downloaded.
 
 I will also include some simple analysis.
 
-Data is open to public which can be downloaded from the following link: https://ai.fmcsa.dot.gov/SMS/Tools/Downloads.aspx
-This data is get updated every month. I downloaded October 2019 dataset.
-If I have time, I can write a PHP script to downloads and updates created database.
+Data is open to public and can be downloaded from this [link](https://ai.fmcsa.dot.gov/SMS/Tools/Downloads.aspx){:target="_blank"}.
+This data updates every month. I downloaded October 2019 dataset.
+If I have time, I will write a PHP script for automatically downloads and updates previously created database.
 
 ## Virtal Private Server Setup
-I rented a low cost virtual private server from OVH ($4 per month (a cup of coffee!)) 1 vCore 2GB memory and 20GB SSD space.
+I rented a low cost virtual private server from OVH ($4 per month (a cup of coffee!)) in the following configuration 1 vCore 2GB memory and 20GB SSD space.
 
 ## Database Setup
-I created a local PostgreSQL database for the data. I could also use real-time read from file but it could take some time to read this data from file. This server is a low-cost server for lightweight works.
+I created a local PostgreSQL database in the server for this data set. I could also use real-time reading from file using data.table library, but it could take some time to read this data from file in this server. This server is a low-cost server for lightweight works.
 
-I will include the script for creating the table.
+So I created a table in the database. You can see the SQL file in the repository.
 
 ## Shiny Server Setup
-Shiny server installation is straightforward. Just follow steps from official Rstudio tutorial: https://rstudio.com/products/shiny/download-server/ubuntu/
+Shiny server installation is straightforward. Just follow steps from official RStudio Shiny tutorial: [link](https://rstudio.com/products/shiny/download-server/ubuntu/){:target="_blank"}
 
 ## Database Credentials protection
-Since I am going to upload this script to the Github public, I am going to hide my credentials.
-
-I created a .Renviron file and included all the credentials in this file as the following:
+Since I am going to upload this script to the Github public repository, I am going to hide my credentials. In order to do so, I created a .Renviron file and included necessary credentials in this file as the following:
 ```
 dbname = "name"
 dbuser = "user"
@@ -34,12 +32,14 @@ dbhost = "Ip address or localhost"
 dbport = 5432 #Generally port for PostgreSQL is 5432. If you have multiple version check port number in postgres config
 dbtable = "table name" #Not really necessary if you have multiple table in your database.
 ```
-When an application or RStudio get started these information are loaded to environment. There are so many ways to protect your credentials which is explained in detail in Rstudio's maual page: https://db.rstudio.com/best-practices/managing-credentials/
+When an application or RStudio get started, these information are loaded to environment. There are so many ways to protect your credentials which is explained detail in Rstudio's maual page: [link](https://db.rstudio.com/best-practices/managing-credentials/){:target="_blank"}
 
 ## NGINX Web Server
-Shiny server has it own port number (3838) to serve its applications. However I don't want to enable any port other than 80. Therefor I setup a proxy in Nginx web server. In this way you can set a subdomain from domain name provider (e.g., GoDaddy, Name.com, etc) and point to Virtual Server IP address. Since we added the proxy information to the NGINX server, it will handle the routing.
+Shiny server has it own port number (3838) to serve its applications. However I don't want to enable any port other than 80. Therefore, I setup a proxy in Nginx web server. In this way, you can set a subdomain from domain name provider (e.g., GoDaddy, Name.com, etc) and point to Virtual Server IP address. Since we added the proxy information to the NGINX server, it will handle the routing.
 
-Anybody who are not familier with the server and proxy can copy the below configuration based on their information.
+Anybody who are not familier with the server and proxy can copy the below configuration. Don't forget to update your information.
+
+Below file is located at /etc/nginx/sites-available/mcmis
 
 ```
 server {
@@ -60,9 +60,9 @@ server {
 ```
 
 ## Symbolic Link
-As you can see from the above RShiny Application folder located in the secure location. Therefore this location must be linked using Linux "Symbolic Link" command. See the example below:
+As you can see from the above root folder location, created RShiny Application located in a secure location. Therefore this location must be linked using Linux "Symbolic Link" command. See the example below:
 ```
 ln -s /opt/shiny-server/samples/mcmis/ /srv/shiny-server/
 ```
 
-Now the application can be seen under my porfolio's subdomain as: http://mcmis.olcaysahin.com
+Now the application can be seen under my porfolio's subdomain as: [http://mcmis.olcaysahin.com](http://mcmis.olcaysahin.com){:target="_blank"}
