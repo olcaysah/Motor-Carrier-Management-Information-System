@@ -6,10 +6,6 @@
 #' --------------
 
 function(input, output, session) {
-  output$keepAlive <- renderText({
-    req(input$count)
-    paste("keep alive ", input$count)
-  })
   observe({
     if (is.null(input$country))
       character(0)
