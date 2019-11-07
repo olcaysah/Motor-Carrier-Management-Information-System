@@ -1,5 +1,6 @@
-RShiny application for downloading and visualizing Motor Carrier Management Information System (MCMIS) data.
-More information can be found here: [link](https://ask.fmcsa.dot.gov/app/mcmiscatalog/d_census_mcmis_doc){:target="_blank"}
+# RShiny application for downloading and visualizing Motor Carrier Management Information System (MCMIS) data.
+
+More information can be found here: [link](https://ask.fmcsa.dot.gov/app/mcmiscatalog/d_census_mcmis_doc)
 
 I wanted to have an example for downloading data from RShiny and PostgreSQL powered web application.
 
@@ -7,7 +8,7 @@ Using this application, data can be filtered and downloaded.
 
 I will also include some simple analysis.
 
-Data is open to public and can be downloaded from this [link](https://ai.fmcsa.dot.gov/SMS/Tools/Downloads.aspx){:target="_blank"}.
+Data is open to public and can be downloaded from this [link](https://ai.fmcsa.dot.gov/SMS/Tools/Downloads.aspx).
 This data updates every month. I downloaded October 2019 dataset.
 If I have time, I will write a PHP script for automatically downloads and updates previously created database.
 
@@ -32,7 +33,7 @@ dbhost = "Ip address or localhost"
 dbport = 5432 #Generally port for PostgreSQL is 5432. If you have multiple version check port number in postgres config
 dbtable = "table name" #Not really necessary if you have multiple table in your database.
 ```
-When an application or RStudio get started, these information are loaded to environment. There are so many ways to protect your credentials which is explained detail in Rstudio's maual page: [link](https://db.rstudio.com/best-practices/managing-credentials/){:target="_blank"}
+When an application or RStudio get started, these information are loaded to environment. There are so many ways to protect your credentials which is explained detail in Rstudio's maual page: [link](https://db.rstudio.com/best-practices/managing-credentials/)
 
 ## NGINX Web Server
 Shiny server has it own port number (3838) to serve its applications. However I don't want to enable any port other than 80. Therefore, I setup a proxy in Nginx web server. In this way, you can set a subdomain from domain name provider (e.g., GoDaddy, Name.com, etc) and point to Virtual Server IP address. Since we added the proxy information to the NGINX server, it will handle the routing.
@@ -65,4 +66,4 @@ As you can see from the above root folder location, created RShiny Application l
 ln -s /opt/shiny-server/samples/mcmis/ /srv/shiny-server/
 ```
 
-Now the application can be seen under my porfolio's subdomain as: [http://mcmis.olcaysahin.com](http://mcmis.olcaysahin.com){:target="_blank"}
+Now the application can be seen under my porfolio's subdomain as: [http://mcmis.olcaysahin.com](http://mcmis.olcaysahin.com)
