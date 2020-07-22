@@ -2,15 +2,12 @@
 
 More information can be found here: [link](https://ask.fmcsa.dot.gov/app/mcmiscatalog/d_census_mcmis_doc)
 
-I wanted to have an example for downloading data from RShiny and PostgreSQL powered web application.
+I wanted to have an example for downloading data to RShiny and PostgreSQL powered web application.
 
 Using this application, data can be filtered and downloaded.
 
-I will also include some simple analysis.
-
 Data is open to public and can be downloaded from this [link](https://ai.fmcsa.dot.gov/SMS/Tools/Downloads.aspx).
 This data updates every month. I downloaded October 2019 dataset.
-If I have time, I will write a PHP script for automatically downloads and updates previously created database.
 
 ## Virtal Private Server Setup
 I rented a low cost virtual private server from OVH ($4 per month (a cup of coffee!)) in the following configuration 1 vCore 2GB memory and 20GB SSD space.
@@ -18,7 +15,7 @@ I rented a low cost virtual private server from OVH ($4 per month (a cup of coff
 ## Database Setup
 I created a local PostgreSQL database in the server for this data set. I could also use real-time reading from file using data.table library, but it could take some time to read this data from file in this server. This server is a low-cost server for lightweight works.
 
-So I created a table in the database. You can see the SQL file in the repository.
+So I created a table in the database. You can see the SQL file to create db table in the repository.
 
 ## Shiny Server Setup
 Shiny server installation is straightforward. Just follow steps from official RStudio Shiny tutorial: [link](https://rstudio.com/products/shiny/download-server/ubuntu/){:target="_blank"}
